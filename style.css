@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+/* img{
+    width: 100%;
+} */
+
 .nav-bar{
     display: flex;
     justify-content: space-between;
@@ -47,4 +51,8 @@
 .hotel-container{
     display: flex;
     flex-wrap: wrap;
+}
+
+.img-container img{
+    width: 100%;
 }
