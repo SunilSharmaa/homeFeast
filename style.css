@@ -56,3 +56,7 @@
 .img-container img{
     width: 100%;
 }
+
+.card-content{
+    padding-inline: 1rem;
+}

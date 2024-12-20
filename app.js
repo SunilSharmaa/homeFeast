@@ -1738,7 +1738,6 @@ let hotelList = [
 }
 ];
 
-
 let Header = ()=> {
     return (
         <div className="nav-bar">
@@ -1768,7 +1767,7 @@ let HotelCard = (props)=> {
         avgRating,
         sla:{deliveryTime},
         cuisines,
-        areaName
+        areaName,
     } = props?.hotels.info;
 
     return (
@@ -1777,10 +1776,12 @@ let HotelCard = (props)=> {
             <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="kfc"></img>
             </div>
 
+            <div className="card-content">
             <h2>{name}</h2>
             <span className="ratings">{avgRating}</span> <span className="delivery-time">{deliveryTime} min</span>
             <p className="cuisine">{cuisines.join(", ")}</p>
             <p className="location">{areaName}</p>
+            </div>
         </div>
     )
 }
@@ -1790,12 +1791,7 @@ let Body = ()=> {
         <>
             <SearchBar />
             <div className="hotel-container">
-                <HotelCard hotels = {hotelList[0]} />
-                <HotelCard hotels = {hotelList[1]} />
-                <HotelCard hotels = {hotelList[2]} />
-                <HotelCard hotels = {hotelList[3]} />
-                <HotelCard hotels = {hotelList[4]} />
-                <HotelCard hotels = {hotelList[5]} />
+                {hotelList.map((hotel)=> <HotelCard key={hotel.info.id}  hotels={hotel} />)}
             </div>
         </>
     )
