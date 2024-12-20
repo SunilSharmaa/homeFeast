@@ -1,7 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-let hotelList = [
+let HOTEL_LIST = [
     {
     "info": {
         "id": "79774",
@@ -1738,73 +1735,4 @@ let hotelList = [
 }
 ];
 
-let Header = ()=> {
-    return (
-        <div className="nav-bar">
-            <img className="logo" src="https://img.freepik.com/premium-vector/food-logo-vector-illustration_943898-19509.jpg?semt=ais_hybrid" alt="logo image"></img>
-
-            <ul className="nav-items">
-                <li>Home</li>
-                <li>Food</li>
-                <li>About Us</li>
-                <li>Contact</li>
-            </ul>
-        </div>
-    )
-}
-
-
-let SearchBar = ()=> {
-    return (
-        <div className="search-bar"></div>
-    )
-}
-
-let HotelCard = (props)=> {
-    let {
-        cloudinaryImageId,
-        name,
-        avgRating,
-        sla:{deliveryTime},
-        cuisines,
-        areaName,
-    } = props?.hotels.info;
-
-    return (
-        <div className="hotel-card">
-            <div className="img-container">
-            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="kfc"></img>
-            </div>
-
-            <div className="card-content">
-            <h2>{name}</h2>
-            <span className="ratings">{avgRating}</span> <span className="delivery-time">{deliveryTime} min</span>
-            <p className="cuisine">{cuisines.join(", ")}</p>
-            <p className="location">{areaName}</p>
-            </div>
-        </div>
-    )
-}
-
-let Body = ()=> {
-    return (
-        <>
-            <SearchBar />
-            <div className="hotel-container">
-                {hotelList.map((hotel)=> <HotelCard key={hotel.info.id}  hotels={hotel} />)}
-            </div>
-        </>
-    )
-}
-
-let Layout = ()=> {
-    return (
-        <div>
-            <Header />
-            <Body />
-        </div>
-    );
-}
-
-let root = ReactDOM.createRoot(document.getElementById("layout"));
-root.render(<Layout />);
+export default HOTEL_LIST;
