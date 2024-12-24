@@ -1,10 +1,33 @@
 import SearchBar from "./SearchBar";
 import HotelCard from "./HotelCard";
-import dummyData from "../utils/dummyData";
-import { useState } from "react";
+// import dummyData from "../utils/dummyData";
+import { useState, useEffect } from "react";
 
 let Body = () => {
-  let [hotelList, setHotelList] = useState(dummyData);
+  let [hotelList, setHotelList] = useState();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  let fetchData = async () => {
+    let data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2506699&lng=77.4348524&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    let json = await data.json();
+
+    console.log(
+      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+
+    setHotelList(
+      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+
+    // console.log(dummyData);
+  };
+
   return (
     <>
       <SearchBar />
@@ -22,7 +45,7 @@ let Body = () => {
       </button>
 
       <div className="hotel-container">
-        {hotelList.map((hotel) => (
+        {hotelList?.map((hotel) => (
           <HotelCard key={hotel.info.id} hotels={hotel} />
         ))}
       </div>
