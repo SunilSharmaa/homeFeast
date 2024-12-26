@@ -1,67 +1,93 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* img{
-    width: 100%;
-} */
-
-.nav-bar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 5rem;
-    padding-top: 1rem;
-    box-shadow: 0px 0.5px 6px .2px;
+/* Nav bar */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 5rem;
+  padding-top: 1rem;
+  box-shadow: 0px 0.5px 6px 0.2px;
 }
 
-.logo{
-    height: 80px;
+.logo {
+  height: 80px;
 }
 
-.nav-items{
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    font-size: 1.3rem;
+.nav-items {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  font-size: 1.3rem;
 }
 
-.search-bar{
-    width: 50px;
-    border: 1px solid black;
-    margin-top: 3rem;
-    margin-left: 6rem;
-    padding: 1rem 6rem;
-    border-radius: 20px;
+/* Body */
+.search-bar {
+  width: 50px;
+  border: 1px solid black;
+  margin-top: 3rem;
+  margin-left: 6rem;
+  padding: 1rem 6rem;
+  border-radius: 20px;
 }
 
-.filter-btn{
-    margin-left: 6rem;
-    margin-top: 1rem;
+.filter-btn {
+  margin-left: 6rem;
+  margin-top: 1rem;
 }
 
-.hotel-card{
-    margin-top: 2rem;
-    margin-left: 5rem;
-    box-shadow: 0px 1px 1px 1px;
-    max-width: 200px;
+.hotel-card {
+  box-shadow: 0px 1px 15px rgb(204, 204, 204);
+  max-width: 200px;
+  min-width: 200px;
 }
 
-.hotel-card img{
-    height: 200px;
+.shimmer-hotel-card {
+  width: 200px;
+  height: 350px;
+  background-color: rgb(235, 235, 235);
 }
 
-.hotel-container{
-    display: flex;
-    flex-wrap: wrap;
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 9rem;
+  margin-left: 8rem;
+  gap: 2rem;
 }
 
-.img-container img{
-    width: 100%;
+.hotel-card img {
+  height: 200px;
 }
 
-.card-content{
-    padding-inline: 1rem;
+.hotel-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-inline: 8rem;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.img-container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding-inline: 1rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.card-content > * + * {
+  margin-top: 0.4rem;
+}
+
+.hotel-name {
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
 }

@@ -1,10 +1,10 @@
 import SearchBar from "./SearchBar";
 import HotelCard from "./HotelCard";
-// import dummyData from "../utils/dummyData";
+import ShimmerEffect from "./ShimmerEffect";
 import { useState, useEffect } from "react";
 
 let Body = () => {
-  let [hotelList, setHotelList] = useState();
+  let [hotelList, setHotelList] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -24,9 +24,29 @@ let Body = () => {
     setHotelList(
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
-
-    // console.log(dummyData);
   };
+
+  if (hotelList.length === 0) {
+    console.log("hello");
+    return (
+      <>
+        <div className="shimmer-container">
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+          {<ShimmerEffect />}
+        </div>
+      </>
+    )
+  }
 
   return (
     <>

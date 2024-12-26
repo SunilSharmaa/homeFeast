@@ -10,6 +10,8 @@ let Header = ()=> {
                 <li>Food</li>
                 <li>About Us</li>
                 <li>Contact</li>
+                <span>|</span>
+                
             </ul>
         </div>
     )
