@@ -1,10 +1,11 @@
-import SearchBar from "./SearchBar";
 import HotelCard from "./HotelCard";
 import ShimmerEffect from "./ShimmerEffect";
 import { useState, useEffect } from "react";
 
 let Body = () => {
   let [hotelList, setHotelList] = useState([]);
+  let [filteredHotelList, setFilteredHotelList] = useState([]);
+  let [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -18,15 +19,18 @@ let Body = () => {
     let json = await data.json();
 
     console.log(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
     setHotelList(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredHotelList(
+      json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
-  if (hotelList.length === 0) {
+  if (hotelList?.length === 0) {
     console.log("hello");
     return (
       <>
@@ -50,7 +54,26 @@ let Body = () => {
 
   return (
     <>
-      <SearchBar />
+      <div className="tools-container">
+      <>
+        <input 
+        type="text" 
+        className="search-bar" 
+        value={searchText} 
+        onChange={(e)=> {
+            setSearchText(e.target.value)
+        }}/>
+        <button className="search-button"
+        onClick={()=> {
+            let filteredHotels = hotelList.filter((hotels)=> {
+              if(hotels?.info?.name.toLowerCase().includes(searchText.toLowerCase())) return true;
+
+            })
+            console.log(filteredHotels);
+            setFilteredHotelList(filteredHotels);
+        }}>search</button>
+        </>
+
       <button
         className="filter-btn"
         onClick={() => {
@@ -58,14 +81,15 @@ let Body = () => {
             return hotel.info.avgRating > 4.2;
           });
 
-          setHotelList(filteredList);
+          setFilteredHotelList(filteredList);
         }}
       >
         Above 4 star rating
       </button>
+      </div>
 
       <div className="hotel-container">
-        {hotelList?.map((hotel) => (
+        {filteredHotelList?.map((hotel) => (
           <HotelCard key={hotel.info.id} hotels={hotel} />
         ))}
       </div>
