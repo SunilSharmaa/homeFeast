@@ -5,6 +5,7 @@
   "scripts": {
     "start": "parcel index.html"
   },
+  "proxy": "https://www.swiggy.com",
   "keywords": [],
   "author": "",
   "license": "ISC",

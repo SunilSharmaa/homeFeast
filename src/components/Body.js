@@ -13,8 +13,7 @@ let Body = () => {
 
   let fetchData = async () => {
     let data = await fetch(
-      "https://proxy.cors.sh/" +
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2506699&lng=77.4348524&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2506699&lng=77.4348524&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     let json = await data.json();
