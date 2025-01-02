@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constant";
 import { useState } from "react";
 
@@ -9,10 +10,16 @@ let Header = () => {
       <img className="logo" src={LOGO_URL} alt="logo image"></img>
 
       <ul className="nav-items">
-        <li>Home</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
         <li>Food</li>
-        <li>About Us</li>
-        <li>Contact</li>
+        <li>
+          <Link to="/about">About Us</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
         <span>|</span>
         <button
           className="login-logout-btn"
