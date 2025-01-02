@@ -49,15 +49,16 @@
 }
 
 .shimmer-hotel-card {
-  width: 200px;
+  width: 270px;
   height: 350px;
+  border-radius: 15px;
   background-color: rgb(235, 235, 235);
 }
 
 .shimmer-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 9rem;
+  margin-top: 4rem;
   margin-left: 8rem;
   gap: 2rem;
 }

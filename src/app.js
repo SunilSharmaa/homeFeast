@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import AboutUs from "./components/AboutUs";
+import About from "./components/About";
 import Contact from "./components/Contact";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ErrorPage from "./components/ErrorPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 let Layout = () => {
   return (
@@ -15,17 +16,49 @@ let Layout = () => {
   );
 };
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <Layout />,
+        errorElement: <ErrorPage />
+    },
+    {
+        path: "/about",
+        element: <About />
+    },
+    {
+        path: "/contact",
+        element: <Contact />
+    }
+])
+
+// const App = () => {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route
+//           path="/"
+//           element={<Layout />}
+//           errorElement={<ErrorPage />} // Attach ErrorPage to Layout
+//         />
+//         <Route
+//           path="/about"
+//           element={<AboutUs />}
+//           errorElement={<ErrorPage />} // Attach ErrorPage to AboutUs
+//         />
+//         <Route
+//           path="/contact"
+//           element={<Contact />}
+//           errorElement={<ErrorPage />} // Attach ErrorPage to Contact
+//         />
+//         <Route
+//           path="*"
+//           element={<ErrorPage />} // Handle unmatched routes
+//         />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// };
 
 let root = ReactDOM.createRoot(document.getElementById("layout"));
-root.render(<App />);
+root.render(<RouterProvider router={appRouter} />);
