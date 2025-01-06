@@ -77,6 +77,10 @@
   margin-top: 2rem;
 }
 
+.container {
+  padding-inline: 8rem;
+}
+
 .img-container img {
   width: 100%;
   object-fit: cover;
