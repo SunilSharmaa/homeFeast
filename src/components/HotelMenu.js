@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import { MENU_API } from "../utils/constant";
 import ShimmerEffect from "./ShimmerEffect";
+import { useParams } from "react-router";
 
 let HotelMenu = ()=> {
 
     let [menuItems, setMenuItems] = useState(null)
+    let {resId} = useParams();
+    console.log(resId);
 
     useEffect(()=> {
         getMenu();
     },[])
 
     let getMenu = async ()=> {
-        let data = await fetch(MENU_API);
+        console.log(MENU_API + resId);
+        let data = await fetch(MENU_API + resId);
         let json = await data.json();
         setMenuItems(json)
-        // console.log(json?.data?.cards);
-        let hotelName = json?.data?.cards[0].card.card.text
+        // console.log(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.itemCards);
+        let hotelName = json?.data?.cards[0]?.card?.card?.text
         let menuItems = json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.itemCards;
 
         // console.log(hotelName);
@@ -25,8 +29,10 @@ let HotelMenu = ()=> {
 
     if(menuItems === null) return <ShimmerEffect />;
 
-    let {text: hotelName} = menuItems?.data?.cards[0].card.card;
+    let {text: hotelName} = menuItems?.data?.cards[0]?.card?.card;
     let {itemCards: menuItemsData} = menuItems?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    // let {id} = menuItems?.data?.cards[2]?.card?.card?.info;
+    // console.log(id);
 
     return (
         <div className="container">
@@ -36,7 +42,8 @@ let HotelMenu = ()=> {
         <ul>
             {
                 menuItemsData.map((item)=> {
-                    return <li>{item.card.info.name}</li>
+                    let {id} = item?.card?.info;
+                    return <li key={id}>{item?.card?.info?.name}</li>
                 })
             }
         </ul>

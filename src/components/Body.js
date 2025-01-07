@@ -1,6 +1,8 @@
+import { HOTELS_API } from "../utils/constant";
 import HotelCard from "./HotelCard";
 import ShimmerEffect from "./ShimmerEffect";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 let Body = () => {
   let [hotelList, setHotelList] = useState([]);
@@ -12,10 +14,7 @@ let Body = () => {
   }, []);
 
   let fetchData = async () => {
-    let data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2506699&lng=77.4348524&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
+    let data = await fetch(HOTELS_API);
     let json = await data.json();
 
     console.log(
@@ -98,9 +97,11 @@ let Body = () => {
       </div>
 
       <div className="hotel-container">
-        {filteredHotelList?.map((hotel) => (
-          <HotelCard key={hotel.info.id} hotels={hotel} />
-        ))}
+        {filteredHotelList?.map((hotel) => {
+            console.log(hotel?.info?.id);
+            return  (<Link to={"hotels/" + hotel?.info?.id} key={hotel.info.id}><HotelCard  hotels={hotel} /></Link>)
+          
+        })}
       </div>
     </>
   );

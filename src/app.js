@@ -35,7 +35,7 @@ const appRouter = createBrowserRouter([
                 element: <Contact />
             },
             {
-                path: "/hotels/:id",
+                path: "/hotels/:resId",
                 element: <HotelMenu />
             }
 
