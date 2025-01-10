@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
 /* Nav bar */
 .nav-bar {
   display: flex;
@@ -79,6 +83,7 @@
 
 .container {
   padding-inline: 8rem;
+  margin-top: 1rem;
 }
 
 .img-container img {
@@ -105,4 +110,10 @@
 /* Button */
 .login-logout-btn{
   padding: .3rem 1rem;
+}
+
+.user-card{
+  padding: 0.8rem;
+  border: 1px solid black;
+  margin-bottom: 0.5rem;
 }
