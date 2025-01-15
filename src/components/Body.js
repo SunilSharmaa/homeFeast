@@ -3,6 +3,7 @@ import HotelCard from "./HotelCard";
 import ShimmerEffect from "./ShimmerEffect";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 let Body = () => {
   let [hotelList, setHotelList] = useState([]);
@@ -28,6 +29,13 @@ let Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  let onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false){
+    console.log(onlineStatus);
+    return <h1>Internet gone.......</h1>
+  }
 
   if (hotelList?.length === 0) {
     console.log("hello");
@@ -95,10 +103,9 @@ let Body = () => {
           Above 4 star rating
         </button>
       </div>
-
       <div className="hotel-container">
         {filteredHotelList?.map((hotel) => {
-            console.log(hotel?.info?.id);
+            // console.log(hotel?.info?.id);
             return  (<Link to={"hotels/" + hotel?.info?.id} key={hotel.info.id}><HotelCard  hotels={hotel} /></Link>)
           
         })}
