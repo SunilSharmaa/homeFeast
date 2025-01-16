@@ -20,6 +20,9 @@ let Header = () => {
         <li>
           <Link to="/contact">Contact</Link>
         </li>
+        <li>
+          <Link to="/privacy">Privacy</Link>
+        </li>
         <span>|</span>
         <button
           className="login-logout-btn"

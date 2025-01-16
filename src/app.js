@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,6 +7,9 @@ import Contact from "./components/Contact";
 import ErrorPage from "./components/ErrorPage";
 import HotelMenu from "./components/HotelMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+// import Privacy from "./components/Privacy";
+
+let Privacy = lazy(()=> import("./components/Privacy"));
 
 let Layout = () => {
   return (
@@ -37,6 +40,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/hotels/:resId",
                 element: <HotelMenu />
+            },
+            {
+                path: "/privacy",
+                element: <Suspense fallback={<h1>Loading..........</h1>}><Privacy /></Suspense>
             }
 
         ],
