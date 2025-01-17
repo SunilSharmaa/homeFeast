@@ -6,7 +6,7 @@ let Header = () => {
   let [buttonName, setButtonName] = useState("Login");
 
   return (
-    <div className="nav-bar">
+    <div className="nav-bar flex ">
       <img className="logo" src={LOGO_URL} alt="logo image"></img>
 
       <ul className="nav-items">
