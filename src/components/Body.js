@@ -19,22 +19,25 @@ let Body = () => {
     let json = await data.json();
 
     console.log(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
     );
 
     setHotelList(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
     );
     setFilteredHotelList(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
     );
   };
 
   let onlineStatus = useOnlineStatus();
 
-  if(onlineStatus === false){
+  if (onlineStatus === false) {
     console.log(onlineStatus);
-    return <h1>Internet gone.......</h1>
+    return <h1>Internet gone.......</h1>;
   }
 
   if (hotelList?.length === 0) {
@@ -61,18 +64,18 @@ let Body = () => {
 
   return (
     <>
-      <div className="tools-container">
-        <>
+      <div className="mt-4 flex gap-x-8 px-20">
+        <div className="flex gap-x-1">
           <input
             type="text"
-            className="search-bar"
+            className="rounded border-2 border-solid border-gray-300"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="search-button"
+            className=" bg-slate-700 text-white px-3  rounded-md"
             onClick={() => {
               let filteredHotels = hotelList.filter((hotels) => {
                 if (
@@ -88,10 +91,10 @@ let Body = () => {
           >
             search
           </button>
-        </>
+        </div>
 
         <button
-          className="filter-btn"
+          className=" bg-slate-700 text-white px-3  rounded-md"
           onClick={() => {
             let filteredList = hotelList.filter((hotel) => {
               return hotel.info.avgRating > 4.2;
@@ -103,11 +106,14 @@ let Body = () => {
           Above 4 star rating
         </button>
       </div>
-      <div className="hotel-container">
+      <div className="hotel-container px-20 mt-8 flex flex-wrap gap-x-10 gap-y-6">
         {filteredHotelList?.map((hotel) => {
-            // console.log(hotel?.info?.id);
-            return  (<Link to={"hotels/" + hotel?.info?.id} key={hotel.info.id}><HotelCard  hotels={hotel} /></Link>)
-          
+          // console.log(hotel?.info?.id);
+          return (
+            <Link to={"hotels/" + hotel?.info?.id} key={hotel.info.id}>
+              <HotelCard hotels={hotel} />
+            </Link>
+          );
         })}
       </div>
     </>

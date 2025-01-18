@@ -11,17 +11,19 @@ let HotelCard = (props) => {
   } = props?.hotels.info;
 
   return (
-    <div className="hotel-card">
-      <div className="img-container">
-        <img src={CDN_LINKS + cloudinaryImageId} alt="kfc"></img>
+    <div className="w-72 hover:scale-95 duration-200">
+      <div className="">
+        <img className=" min-w-72 object-center h-44 object-cover rounded-2xl" src={CDN_LINKS + cloudinaryImageId} alt="kfc"></img>
       </div>
 
-      <div className="card-content">
-        <h2 className="hotel-name">{name}</h2>
-        <span className="ratings">{avgRating}</span>{" "}
-        <span className="delivery-time">{deliveryTime} min</span>
-        <p className="cuisine">{cuisines.join(", ")}</p>
-        <p className="location">{areaName}</p>
+      <div className="card-content px-2">
+        <h2 className="mt-2 text-lg font-semibold leading-tight tracking-tighter">{name}</h2>
+        <div className="mt-0">
+        <span className="ratings font-semibold text-sm">{avgRating}</span>{" - "}
+        <span className="delivery-time font-semibold text-sm">{deliveryTime} min</span>
+        </div>
+        <p className="cuisine font-normal text-gray-500 tracking-tighter">{cuisines.join(", ")}</p>
+        <p className="location font-normal text-gray-500 tracking-tighter">{areaName}</p>
       </div>
     </div>
   );
