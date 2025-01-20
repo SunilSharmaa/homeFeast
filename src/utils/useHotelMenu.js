@@ -9,7 +9,6 @@ let useHotelMenu = (resId)=> {
         },[])
     
     let getMenu = async ()=> {
-            console.log(MENU_API + resId);
             let data = await fetch(MENU_API + resId);
             let json = await data.json();
             setMenuItems(json)

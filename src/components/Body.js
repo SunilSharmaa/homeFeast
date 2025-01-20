@@ -18,11 +18,6 @@ let Body = () => {
     let data = await fetch(HOTELS_API);
     let json = await data.json();
 
-    console.log(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants,
-    );
-
     setHotelList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants,
@@ -41,7 +36,6 @@ let Body = () => {
   }
 
   if (hotelList?.length === 0) {
-    console.log("hello");
     return (
       <>
         <div className="shimmer-container">
@@ -106,9 +100,9 @@ let Body = () => {
           Above 4 star rating
         </button>
       </div>
+
       <div className="hotel-container px-20 mt-8 flex flex-wrap gap-x-10 gap-y-6">
         {filteredHotelList?.map((hotel) => {
-          // console.log(hotel?.info?.id);
           return (
             <Link to={"hotels/" + hotel?.info?.id} key={hotel.info.id}>
               <HotelCard hotels={hotel} />
