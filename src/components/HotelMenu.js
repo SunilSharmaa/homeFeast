@@ -35,7 +35,8 @@ let HotelMenu = () => {
 
       <div>
         {categoryMenu.map((category)=> {
-          return <MenuItems menu={category}/>
+          // console.log(category?.card?.card?.title);
+          return <MenuItems key={category?.card?.card?.title} menu={category}/>
         })}
       </div>
     </div>
