@@ -5,8 +5,8 @@ import userContext from "../utils/userContext";
 
 let Header = () => {
   let [buttonName, setButtonName] = useState("Login");
-  let userName = useContext(userContext);
-  console.log(userName);
+  let {loggedInUser} = useContext(userContext);
+  // console.log(loggedInUser); 
 
   return (
     <div className="flex justify-between px-20 shadow-lg">
@@ -45,7 +45,7 @@ let Header = () => {
           >
             {buttonName}
           </button>
-      <span className="self-center font-semibold">{userName}</span>
+      <span className="self-center font-semibold">{loggedInUser}</span>
       </div>
     </div>
     

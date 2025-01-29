@@ -1,14 +1,17 @@
 import { HOTELS_API } from "../utils/constant";
 import HotelCard from "./HotelCard";
 import ShimmerEffect from "./ShimmerEffect";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 let Body = () => {
   let [hotelList, setHotelList] = useState([]);
   let [filteredHotelList, setFilteredHotelList] = useState([]);
   let [searchText, setSearchText] = useState("");
+  let {loggedInUser, setUserName} = useContext(userContext);
+  console.log(setUserName);
 
   useEffect(() => {
     fetchData();
@@ -34,6 +37,8 @@ let Body = () => {
     console.log(onlineStatus);
     return <h1>Internet gone.......</h1>;
   }
+
+
 
   if (hotelList?.length === 0) {
     return (
@@ -71,9 +76,9 @@ let Body = () => {
           <input
             type="text"
             className="rounded border-2 border-solid border-gray-300"
-            value={searchText}
+            value={loggedInUser}
             onChange={(e) => {
-              setSearchText(e.target.value);
+              setUserName(e.target.value);
             }}
           />
           <button

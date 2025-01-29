@@ -13,22 +13,22 @@ let Privacy = lazy(()=> import("./components/Privacy"));
 
 
 let Layout = () => {
-    let [userInfo, setUserInfo] = useState();
+    let [userName, setUserName] = useState();
     let {loggedInUser} = useContext(userContext);
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
 
     useEffect(()=> {
-       let userInfo = {
-        userName: "Gamma"
+       let data = {
+        name: "Gamma"
        }
 
-       setUserInfo(userInfo.userName);
-       console.log(userInfo.userName);
+       setUserName(data.name);
+    //    console.log(data.name);
     }, [])
 
   return (
     <div>
-        <userContext.Provider value={userInfo}>
+        <userContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <Header />
       <Outlet />
       </userContext.Provider>
@@ -67,33 +67,6 @@ const appRouter = createBrowserRouter([
     }
 ])
 
-// const App = () => {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route
-//           path="/"
-//           element={<Layout />}
-//           errorElement={<ErrorPage />} // Attach ErrorPage to Layout
-//         />
-//         <Route
-//           path="/about"
-//           element={<AboutUs />}
-//           errorElement={<ErrorPage />} // Attach ErrorPage to AboutUs
-//         />
-//         <Route
-//           path="/contact"
-//           element={<Contact />}
-//           errorElement={<ErrorPage />} // Attach ErrorPage to Contact
-//         />
-//         <Route
-//           path="*"
-//           element={<ErrorPage />} // Handle unmatched routes
-//         />
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// };
 
 let root = ReactDOM.createRoot(document.getElementById("layout"));
 root.render(<RouterProvider router={appRouter} />);

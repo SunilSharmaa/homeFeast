@@ -12,8 +12,8 @@ let HotelCard = (props) => {
     areaName,
   } = props?.hotels.info;
 
-  let userName = useContext(userContext);
-  console.log(userName);
+  let {loggedInUser} = useContext(userContext);
+  // console.log(loggedInUser);
   return (
     <div className="w-72 hover:scale-95 duration-200">
       <div className="">
@@ -28,7 +28,7 @@ let HotelCard = (props) => {
         </div>
         <p className="cuisine font-normal text-gray-500 tracking-tighter">{cuisines.join(", ")}</p>
         <p className="location font-normal text-gray-500 tracking-tighter">{areaName}</p>
-        <p className="location  text-gray-500 tracking-tighter font-semibold">{userName}</p>
+        <p className="location  text-gray-500 tracking-tighter font-semibold">{loggedInUser}</p>
       </div>
     </div>
   );
