@@ -22,7 +22,7 @@ class UserClass extends React.Component{
         let {count2} = this.state;
         return (
             <div className="user-card">
-            <h1>Count: {count}</h1>
+            <h1>Count: {count}</h1> 
             <h1>Count: {count2}</h1>
             <button onClick={()=> {
                 this.setState(

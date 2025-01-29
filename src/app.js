@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState, useContext} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,15 +7,31 @@ import Contact from "./components/Contact";
 import ErrorPage from "./components/ErrorPage";
 import HotelMenu from "./components/HotelMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-// import Privacy from "./components/Privacy";
+import userContext from "./utils/userContext";
 
 let Privacy = lazy(()=> import("./components/Privacy"));
 
+
 let Layout = () => {
+    let [userInfo, setUserInfo] = useState();
+    let {loggedInUser} = useContext(userContext);
+    console.log(loggedInUser);
+
+    useEffect(()=> {
+       let userInfo = {
+        userName: "Gamma"
+       }
+
+       setUserInfo(userInfo.userName);
+       console.log(userInfo.userName);
+    }, [])
+
   return (
     <div>
+        <userContext.Provider value={userInfo}>
       <Header />
       <Outlet />
+      </userContext.Provider>
     </div>
   );
 };

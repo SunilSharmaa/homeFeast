@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constant";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import userContext from "../utils/userContext";
 
 let Header = () => {
   let [buttonName, setButtonName] = useState("Login");
+  let userName = useContext(userContext);
+  console.log(userName);
 
   return (
     <div className="flex justify-between px-20 shadow-lg">
@@ -31,6 +34,7 @@ let Header = () => {
         </li>
         
       </ul>
+      <div className="flex justify-center gap-x-2">
       <button
             className="login-logout-btn hover:font-semibold"
             onClick={() => {
@@ -41,7 +45,10 @@ let Header = () => {
           >
             {buttonName}
           </button>
+      <span className="self-center font-semibold">{userName}</span>
+      </div>
     </div>
+    
   );
 };
 

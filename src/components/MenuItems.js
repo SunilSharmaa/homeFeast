@@ -1,21 +1,12 @@
-import { useState } from "react";
-import { CDN_LINKS } from "../utils/constant";
 import Item from "./Item";
-
-let MenuItems = ({ menu }) => {
-  // Safely access `itemCards`
+let MenuItems = ({ menu, showMenu, setMenu}) => {
   let items = menu?.card?.card?.itemCards || [];
-  let [showMenu, setShowMenu] = useState(true);
-
-  let handleClick = () => {
-    setShowMenu(!showMenu);
-  };
 
   return (
     <div className="mx-auto mb-4 w-6/12">
       <div
         className="flex cursor-pointer justify-between"
-        onClick={handleClick}
+        onClick={setMenu}
       >
         <div>
           <span className="me-1 font-semibold">{menu?.card?.card?.title}</span>

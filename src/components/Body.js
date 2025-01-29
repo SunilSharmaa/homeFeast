@@ -68,6 +68,14 @@ let Body = () => {
               setSearchText(e.target.value);
             }}
           />
+          <input
+            type="text"
+            className="rounded border-2 border-solid border-gray-300"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
           <button
             className=" bg-slate-700 text-white px-3  rounded-md"
             onClick={() => {
