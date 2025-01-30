@@ -40,9 +40,9 @@ class UserClass extends React.Component{
         return (
             <div className="user-card">
                 <userContext.Consumer>
-                 {(data)=> {
-                    // console.log(loggedInUser);
-                   return <h1>hell</h1>
+                 {({loggedInUser})=> {
+                    console.log(loggedInUser);
+                   return <h1>{loggedInUser}</h1>
                  }}   
                 </userContext.Consumer>
                 
