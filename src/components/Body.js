@@ -11,7 +11,6 @@ let Body = () => {
   let [filteredHotelList, setFilteredHotelList] = useState([]);
   let [searchText, setSearchText] = useState("");
   let {loggedInUser, setUserName} = useContext(userContext);
-  console.log(setUserName);
 
   useEffect(() => {
     fetchData();

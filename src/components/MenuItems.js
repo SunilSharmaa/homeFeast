@@ -9,8 +9,8 @@ let MenuItems = ({ menu, showMenu, setMenu}) => {
         onClick={setMenu}
       >
         <div>
-          <span className="me-1 font-semibold">{menu?.card?.card?.title}</span>
-          <span className="font-semibold">({items.length})</span>
+          <span className="me-1 font-semibold">{menu?.card?.card?.title} </span>
+          <span className="font-semibold">({items.length}) </span>
         </div>
 
         <div>

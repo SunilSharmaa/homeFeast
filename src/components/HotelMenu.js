@@ -16,6 +16,7 @@ let HotelMenu = () => {
   let categories =
     menuItems?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards;
   let categoryMenu = categories.filter((cat) => {
+    // console.log(cat);
     if (
       cat.card.card["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"

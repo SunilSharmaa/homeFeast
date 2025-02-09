@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constant";
 import { useContext, useState } from "react";
 import userContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 let Header = () => {
   let [buttonName, setButtonName] = useState("Login");
   let {loggedInUser} = useContext(userContext);
   // console.log(loggedInUser); 
+  let cart = useSelector((store)=> store.cart.items);
+  console.log(cart);
 
   return (
     <div className="flex justify-between px-20 shadow-lg">
@@ -31,6 +34,9 @@ let Header = () => {
         </li>
         <li>
           <Link to="/privacy" className=" hover:font-semibold">Privacy</Link>
+        </li>
+        <li className="font-semibold">
+          <Link to="/cart" className="font-semibold">Cart ({cart.length} items)</Link>
         </li>
         
       </ul>
